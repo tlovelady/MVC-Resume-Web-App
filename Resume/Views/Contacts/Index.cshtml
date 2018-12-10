@@ -1,0 +1,267 @@
+﻿@model Resume.Models.ResumeViewModel.ResumeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Edit which resume?</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacts.First().FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacts.First().PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacts.First().EmailAddress)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Contacts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3>Skills</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Skills.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skills.First().Category)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Skills)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                <a asp-action="Create">Create</a> |
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3>Certifications</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Certifications.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certifications.First().Category)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Certifications)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                <a asp-action="Create">Create</a> |
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3>Education</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Educations.First().InstitutionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Educations.First().GPA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Educations.First().GraduationYear)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Educations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstitutionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPA)
+                </td>
+                @if(item.GraduationYear != null)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GraduationYear)
+                    </td>
+                }
+                    <td>
+                        <a asp-action="Create">Create</a> |
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Experience</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiences.First().Workplace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiences.First().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiences.First().StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiences.First().EndDate)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Experiences)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Workplace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a asp-action="Index" asp-route-expid="@item.ID">Select</a> |
+                <a asp-action="Create">Create</a> |
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (Model.Responsibilities != null)
+{
+    <h3>Responsibilities</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Responsibilities.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Responsibilities.First().Experience)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Responsibilities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Experience.Workplace)
+                </td>
+                <td>
+                    <a asp-action="Create">Create</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<h3>Skill/Certification Categories</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.First().Name)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Create">Create</a> |
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
